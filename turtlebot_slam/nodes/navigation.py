@@ -25,8 +25,8 @@ class MovetoGoal:
         self.client.wait_for_server()
         
         while not rospy.is_shutdown():
-            self.random_x = random.random()
-            self.random_y = random.random()
+            self.random_x = random.uniform(-1, 1)
+            self.random_y = random.uniform(-1, 1)
             self.goal = MoveBaseGoal()
             #goal should be position and orientation specified in rviz    
             self.goal.target_pose.header.frame_id = "map"

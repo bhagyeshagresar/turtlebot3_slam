@@ -1,4 +1,4 @@
-image: /home/bhagyesh/homework4/src/turtlebot_slam/map_real.pgm
+image: /home/bhagyesh/homework4/src/homework-4-bhagyeshagresar/turtlebot_slam/map_real.pgm
 resolution: 0.050000
 origin: [-1.189604, -1.200964, 0.000000]
 negate: 0

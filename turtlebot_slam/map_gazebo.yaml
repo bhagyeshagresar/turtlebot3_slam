@@ -1,4 +1,4 @@
-image: /home/bhagyesh/homework4/src/turtlebot_slam/map_gazebo.pgm
+image: /home/bhagyesh/homework4/src/homework-4-bhagyeshagresar/turtlebot_slam/map_gazebo.pgm
 resolution: 0.050000
 origin: [-7.563261, -5.509937, 0.000000]
 negate: 0
