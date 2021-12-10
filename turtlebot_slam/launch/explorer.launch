@@ -1,0 +1,17 @@
+<launch>
+
+    <arg name="simulation" default="true" />
+
+    <group if="$(arg simulation)">
+            <include file="$(find turtlebot_slam)/launch/slam_stack.launch"/>
+        <!-- <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_gazebo_rviz.launch"/> -->
+
+    </group>
+
+
+    
+    <!-- <node name="navigation" type="navigation.py" pkg="turtlebot_slam" output="screen">
+    </node> -->
+
+
+</launch>

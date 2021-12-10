@@ -1,7 +1,7 @@
 <launch>
 
 <arg name="simulation" default="true" />
-<arg name="map_file" default="$(find turtlebot_slam)/maps/map_gazebo.yaml"/>
+<arg name="map_file" default="$(find turtlebot_slam)/map_gazebo.yaml"/>
 
 
   <group if="$(arg simulation)">
