@@ -1,0 +1,22 @@
+<launch>
+
+    <arg name="simulation" default="true" />
+    
+    <group if="$(arg simulation)">
+        <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch"/>
+        <!-- <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_gazebo_rviz.launch"/> -->
+
+    </group>
+
+
+    
+    <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/>
+    <include file="$(find turtlebot3_teleop)/launch/turtlebot3_teleop_key.launch"/>
+    <include file="$(find slam_toolbox)/online_async.launch"/> 
+    <include file="$(find turtlebot3_navigation)/launch/move_base.launch"/>
+
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find turtlebot_slam)/rviz/config1.rviz" />
+
+
+</launch>
