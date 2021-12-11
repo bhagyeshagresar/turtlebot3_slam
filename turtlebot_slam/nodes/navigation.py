@@ -1,4 +1,15 @@
 #!/usr/bin/env python3
+"""
+Python node to implement a random autonomous motion of Turtlebot3 using move_base package
+
+Subscriber:
+topic : /odom Message Type : nav_msgs/Odometry
+
+Client:
+
+topic : move_base Message Type : move_base_msgs/MoveBaseAction
+"""
+
 
 
 import rospy
@@ -14,13 +25,17 @@ import random
 
 
 class MovetoGoal:
+    """
+    Send random goal directions using move_base by subscribing to /odom topic
+    """
 
     def __init__(self):
+        """
+        Implement SimpleActionClient to constantly send goals
+        """
 
         rospy.init_node("navigation")
         self.odometry = rospy.Subscriber("/odom", Odometry, self.odom_callback)
-        # self.laser = rospy.Subscriber("/scan", LaserScan, self.laser_callback)
-        # self.map = rospy.Subscriber("/map", MapMetaData, self.map_callback)
         self.client = actionlib.SimpleActionClient("move_base", MoveBaseAction)
         self.client.wait_for_server()
         
@@ -28,7 +43,6 @@ class MovetoGoal:
             self.random_x = random.uniform(-1, 1)
             self.random_y = random.uniform(-1, 1)
             self.goal = MoveBaseGoal()
-            #goal should be position and orientation specified in rviz    
             self.goal.target_pose.header.frame_id = "map"
             self.goal.target_pose.header.stamp = rospy.Time.now()
             self.goal.target_pose.pose.position.x = self.x + self.random_x
@@ -45,28 +59,12 @@ class MovetoGoal:
 
 
     def odom_callback(self, data):
+        """
+        function gives position of the robot relative to the map coordinates
+        """
 
         self.x = data.pose.pose.position.x
         self.y = data.pose.pose.position.y
-
-    # def map_callback(self, data):
-
-    # def laser_callback(self, data):
-
-
-
-    # def random_direction(self):
-    #     while not rospy.is_shutdown():
-    #         random_x = random.random()
-    #         random_y = random.random()
-    #         self.goal = MoveBaseGoal()
-    #         #goal should be position and orientation specified in rviz
-    #         self.goal.target_pose.pose.position.x = self.x + random_x
-    #         self.goal.target_pose.pose.position.y = self.y + random_y
-    #         self.goal.target_pose.pose.orientation.w = 1
-
-
-
 
     
 
@@ -74,5 +72,4 @@ class MovetoGoal:
 if __name__ == "__main__":
 
     n = MovetoGoal()
-    # n.random_direction()
     rospy.spin()
