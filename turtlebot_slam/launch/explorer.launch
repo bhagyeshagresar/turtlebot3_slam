@@ -9,14 +9,13 @@
 
     </group>
 
-    <!-- <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/> -->
+    <!-- <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/>
     <include file="$(find slam_toolbox)/online_async.launch"/>
-    <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/>
-    <include file="$(find turtlebot3_navigation)/launch/move_base.launch"/>
+    <include file="$(find turtlebot3_navigation)/launch/move_base.launch"/> -->
 
-    <node pkg="rviz" type="rviz" name="rviz" required="true"
+    <!-- <node pkg="rviz" type="rviz" name="rviz" required="true"
           args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
-
+ -->
 
     
     <node name="navigation" type="navigation.py" pkg="turtlebot_slam" output="screen">

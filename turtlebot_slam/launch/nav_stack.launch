@@ -2,26 +2,24 @@
 
 <arg name="simulation" default="true" />
 <arg name="map_file" default="$(find turtlebot_slam)/map_gazebo.yaml"/>
-<arg name="map_file2" default="$(find turtlebot_slam)/map_real.yaml"/>
+
 
   <group if="$(arg simulation)">
     <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch"/>
-    <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
-        <arg name="map_file" value="$(arg map_file)"/>
-    </include>
+    <!-- <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_gazebo_rviz.launch"/> -->
   </group>
 
-    
+  <!-- <node pkg="map_server" name="map_server" type="map_server" args="$(find turtlebot_slam)/maps/map_gazebo"/> -->
+
+
   <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
-      <arg name="map_file" value="$(arg map_file2)"/>
+      <arg name="map_file" value="$(arg map_file)"/>
   </include>
-
-
- 
 
   <!-- <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/> -->
 
   
+
 
 </launch>
 
