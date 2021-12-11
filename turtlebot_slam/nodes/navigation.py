@@ -39,9 +39,9 @@ class MovetoGoal:
             self.client.get_result()
 
             if(self.client.get_state() == GoalStatus.SUCCEEDED):
-                rospy.loginfo("Hooray, the base moved 1 meter forward")
+                rospy.loginfo("Robot moves to the goal")
             else:
-                rospy.loginfo("The base failed to move forward 1 meter for some reason")
+                rospy.loginfo("Robot fails to move to the goal")
 
 
     def odom_callback(self, data):

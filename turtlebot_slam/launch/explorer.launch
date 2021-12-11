@@ -4,14 +4,23 @@
 
     <group if="$(arg simulation)">
             <include file="$(find turtlebot_slam)/launch/slam_stack.launch"/>
+
         <!-- <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_gazebo_rviz.launch"/> -->
 
     </group>
 
+    <!-- <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/> -->
+    <include file="$(find slam_toolbox)/online_async.launch"/>
+    <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/>
+    <include file="$(find turtlebot3_navigation)/launch/move_base.launch"/>
+
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
+
 
     
-    <!-- <node name="navigation" type="navigation.py" pkg="turtlebot_slam" output="screen">
-    </node> -->
+    <node name="navigation" type="navigation.py" pkg="turtlebot_slam" output="screen">
+    </node> 
 
 
 </launch>
